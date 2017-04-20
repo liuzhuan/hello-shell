@@ -1,0 +1,47 @@
+#!/bin/bash
+
+DEST=master
+
+Usage () {
+  echo "Usage:"
+  echo 'fast-merge -d <dest-branch-name> branch-names...'
+} 
+
+Merge () {
+  echo merge branch $1
+  git co $DEST
+  git pull
+  git co $1
+  git pull
+  git rebase $DEST
+  git co $DEST
+  git merge $1
+  git push
+  echo '===== ' $1 ' merged ====='
+}
+
+GetDest() {
+  while getopts "d:h" arg
+  do
+    case $arg in
+      d)
+        DEST=$OPTARG
+	;;
+      h)
+        Usage
+	;;
+      ?)
+        echo 'unknown argument'
+	exit 1
+	;;
+    esac
+  done
+}
+
+GetDest $*
+shift "$((OPTIND - 1))"
+
+for branch in $@
+do
+  Merge $branch
+done
