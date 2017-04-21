@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# util script for git repository operator
+# It can merge a branch into master with command:
+# fast-merge <branch>
+# You can use `-d <dest>` to specify another target branch:
+# fast-merge -d feature <branch>
+# You can merge multiple branch at the same time
+# fast-merge <branch-1> <branch-2> <branch-3>
+# You can use `-h` to show usage:
+# fast-merge -h
+
 DEST=master
 
 Usage () {
@@ -9,12 +19,12 @@ Usage () {
 
 Merge () {
   echo merge branch $1
-  git co $DEST
+  git checkout $DEST
   git pull
-  git co $1
+  git checkout $1
   git pull
   git rebase $DEST
-  git co $DEST
+  git checkout $DEST
   git merge $1
   git push
   echo '===== ' $1 ' merged ====='
