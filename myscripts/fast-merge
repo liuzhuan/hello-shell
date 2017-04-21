@@ -48,7 +48,7 @@ GetDest() {
   done
 }
 
-GetDest $*
+GetDest $@
 shift "$((OPTIND - 1))"
 
 for branch in $@
