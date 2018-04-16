@@ -1,5 +1,6 @@
-# shell
-shell tutorial
+# Hello Shell
+
+查看[目录](./src/SUMMARY.md)
 
 ## myscripts
 1. [fast merge git branch](./myscripts/fast-merge)
