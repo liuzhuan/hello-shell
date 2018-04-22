@@ -137,8 +137,21 @@ Shell 脚本现在知道我们在引用 `USER_NAME` 变量，并且增加了 `_f
 
 还要注意 `"${USER_NAME}_file"` 周围的双引号 - 假如用户输入了 `"Steve Parker"`（注意中间的空格），如果没使用引号，那么 `touch` 命令接收的将是 `Steve` 和 `Parker_file` 两个参数，即我们实际运行的是 `touch Steve Parker_file`，这会创建两个文件，而不是我们期望的一个。引号会避免这个错误。
 
+## 预置变量
+
+有些变量已经为你提前定义，你不能改变它们的值，但可以直接使用。
+
+它们包含有用信息，可以在脚本中使用，用来判断脚本所处的环境信息。
+
+```
+```
+
+（未完待续。。。）
+
 ## REF
 
-- [Variables - Part 1][var1], Shell Scripting Tutorial
+- [Variables - Part 1][var1], by *Steve Parker*
+- [Variables - Part 2][var2], by *Steve Parker*
 
 [var1]: https://www.shellscript.sh/variables1.html
+[var2]: https://www.shellscript.sh/variables2.html
