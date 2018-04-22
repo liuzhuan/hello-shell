@@ -61,7 +61,50 @@ do
 done
 ```
 
-（未完待续。。。）
+另一个有用的技巧是 `while read f` 循环。下面的例子使用了 `case` 语句，从 `myfile` 中读取文件。
+
+[while3a.sh](./while3a.sh)
+
+```sh
+#!/bin/sh
+while read f
+do
+    case $f in
+        hello)          echo English                ;;
+        howdy)          echo American               ;;
+        gday)           echo Australian             ;;
+        bonjour)        echo Frech                  ;;
+        "guten tag")    echo German                 ;;
+        *)              echo Unkown Language: $f    ;;
+    esac
+done < myfile
+```
+
+在许多 Unix 系统中，也可以写成：
+
+[while3b.sh](./while3b.sh)
+
+```sh
+#!/bin/sh
+while f=`line`
+do
+    ... process f ...
+done < myfile
+```
+
+由于 `while read f` 可以在任意 *nix 中运行，无需依赖外部程序 `line`，第一个写法更可取。
+
+Bash 的另一个小技巧是：
+
+```sh
+$ mkdir rc{0,1,2,3,4,5,6,S}.d
+```
+
+它也可以被递归调用：
+
+```sh
+$ ls -ld {,usr,usr/local}/{bin,sbin,lib}
+```
 
 ## REF
 
